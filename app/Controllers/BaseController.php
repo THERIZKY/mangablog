@@ -27,6 +27,8 @@ abstract class BaseController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
+    protected $mangaModels;
+    protected $chapterModels;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -52,7 +54,8 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
-
+        $this->mangaModels = model('mangaModels');
+        $this->chapterModels = model('chapterModels');
         // E.g.: $this->session = \Config\Services::session();
     }
 }

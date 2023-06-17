@@ -29,8 +29,14 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+/* Pages */
+$routes->get('/', 'Pages::index');
+$routes->get('/about', 'Pages::about');
 
+/* Manga Routes */
+$routes->get('/manga', 'Manga::index');
+$routes->get('/manga/(:any)/(:num)', 'Manga::getChapter/$1/$2');
+$routes->get('/manga/(:any)', 'Manga::getDetailManga/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
