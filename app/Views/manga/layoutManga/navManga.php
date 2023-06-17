@@ -6,15 +6,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link"><i class="fa-solid fa-house"></i></a>
+                    <a class="nav-link" href="/manga/<?= $chapters[0]->slug; ?>"><i class="fa-solid fa-house"></i></a>
                 </li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link"><i class="fa-solid fa-arrow-left"></i></a>
+                <li class="nav-itz  em">
+                    <a class="nav-link" href="/manga/<?= $chapters[0]->slug; ?>/<?= ($chapters[0]->chapter - 1 === 0) ? "" : $chapters[0]->chapter - 1; ?>"><i class="fa-solid fa-arrow-left"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a class="nav-link" href="/manga/<?= $chapters[0]->slug; ?>/<?= ($chapters[0]->chapter + 1 > $countChapter) ? "" : $chapters[0]->chapter + 1; ?>"><i class="fa-solid fa-arrow-right"></i></a>
                 </li>
             </ul>
         </div>

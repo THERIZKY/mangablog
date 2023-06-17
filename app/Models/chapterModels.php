@@ -17,7 +17,7 @@ class chapterModels extends Model
         $db      = \Config\Database::connect();
         $builder = $db->table('chapter');
 
-        return $builder->join('manga', 'manga.mangaId = chapter.idManga', 'inner')->where(['slug' => $slug])->get()->getResultObject();
+        return $builder->join('manga', 'manga.mangaId = chapter.idManga', 'inner')->where(['slug' => $slug])->orderBy("chapter", "ASC")->get()->getResultObject();
     }
 
     public function getChapter($slug, $chapter)
@@ -26,5 +26,13 @@ class chapterModels extends Model
         $builder = $db->table('chapter');
 
         return $builder->join('manga', 'manga.mangaId = chapter.idManga', 'inner')->where(['slug' => $slug, 'chapter' => $chapter])->limit(1)->get()->getResultObject();
+    }
+
+    public function countChapter($slug)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('chapter');
+
+        return $builder->join('manga', 'manga.mangaId = chapter.idManga', 'inner')->where(['slug' => $slug,])->countAllResults();
     }
 }
