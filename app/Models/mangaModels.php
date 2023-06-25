@@ -20,4 +20,12 @@ class mangaModels extends Model
             return $this->findAll();
         }
     }
+
+    public function latestManga()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('manga');
+
+        return $builder->select('*')->orderBy('rilis', 'DESC')->get()->getResultObject();
+    }
 }

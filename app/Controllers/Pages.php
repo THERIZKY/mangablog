@@ -6,8 +6,10 @@ class Pages extends BaseController
 {
     public function index()
     {
+        $latestManga = $this->mangaModels->latestManga();
         $data = [
-            'title' => 'osanagoManga || Manga Bahasa Indonesia'
+            'title' => 'osanagoManga || Manga Bahasa Indonesia',
+            'latest' => $latestManga
         ];
 
         return view('pages/index', $data);

@@ -13,11 +13,11 @@
 					<a class="nav-link" href="/manga">Manga List</a>
 				</li>
 			</ul>
-			<ul class="navbar-nav">
+			<!-- <ul class="navbar-nav">
 				<li>
 					<button id="modeSwitcher" class="btn">Switch Mode</button>
 				</li>
-			</ul>
+			</ul> -->
 			<!-- <form class="d-flex" role="search">
 				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
 				<button class="btn btn-outline-success" type="submit">Search</button>

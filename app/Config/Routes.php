@@ -37,6 +37,12 @@ $routes->get('/about', 'Pages::about');
 $routes->get('/manga', 'Manga::index');
 $routes->get('/manga/(:any)/(:num)', 'Manga::getChapter/$1/$2');
 $routes->get('/manga/(:any)', 'Manga::getDetailManga/$1');
+$routes->get('/testing', 'Home::index');
+
+
+/* Admin Routes */
+$routes->get('/admin', 'Admin::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

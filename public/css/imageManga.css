@@ -1,0 +1,19 @@
+/* Buat Manga */
+.manga-image {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.manga-image a {
+	display: flex;
+}
+
+.manga-image img {
+	width: 1500px;
+}
+
+.mlist.card {
+	width: 18rem;
+}

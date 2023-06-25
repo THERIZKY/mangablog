@@ -1,12 +1,16 @@
 <?= $this->extend('manga/layoutManga/templateManga'); ?>
 <?= $this->section('manga'); ?>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <?php foreach ($chapters as $ch) : ?>
-                <p class="no-click object-fit-cover"><?= $ch->image; ?></p>
-            <?php endforeach; ?>
+<div class="manga-image-container">
+    <?php foreach ($chapters as $ch) : ?>
+        <div class="manga-image no-click">
+            <?= $ch->image; ?>
         </div>
-    </div>
+    <?php endforeach; ?>
 </div>
+
 <?= $this->endSection(); ?>
+<!-- <div class="manga-image no-click">
+    <?php foreach ($chapters as $ch) : ?>
+        <?= $ch->image; ?>
+    <?php endforeach; ?>
+</div> -->

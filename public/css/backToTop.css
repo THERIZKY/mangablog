@@ -1,0 +1,16 @@
+#back-to-top {
+	display: none; /* Sembunyikan tombol secara default */
+	position: fixed; /* Tetapkan posisi tombol */
+	bottom: 0; /* Jarak dari bawah halaman */
+	right: 20px; /* Jarak dari tepi kanan halaman */
+	z-index: 99; /* Tingkat tampilan (z-index) di atas elemen lain */
+	font-size: 16px; /* Ukuran teks tombol */
+	padding: 10px 15px; /* Ruang dalam tombol */
+	border: none; /* Hapus batas tombol */
+	border-radius: 15px 15px 0 0;
+	outline: none; /* Hapus tampilan fokus saat tombol diklik */
+	background-color: #555; /* Warna latar belakang tombol */
+	color: #fff; /* Warna teks tombol */
+	cursor: pointer; /* Kursor menjadi tanda panah saat diarahkan ke tombol */
+	animation: fadeIn 0.3s ease-in-out; /* Terapkan animasi fadeIn pada tombol */
+}
