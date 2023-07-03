@@ -34,10 +34,18 @@
 		text-align: center;
 		max-width: 100%;
 	}
+
+	#sidebar {
+		display: none;
+	}
+
+	.main-content {
+		margin-left: 15px;
+	}
 }
 
 /* Mobile */
-@media (max-width: 480px) and (min-width: 320px) {
+@media (max-width: 480px) and (min-width: 0px) {
 	.manga-image img {
 		width: 100%;
 	}
@@ -61,5 +69,13 @@
 	#back-to-top {
 		font-size: 10px;
 		padding: 3px 7px;
+	}
+
+	#sidebar {
+		display: none;
+	}
+
+	.main-content {
+		margin-left: 10px;
 	}
 }

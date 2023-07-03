@@ -42,6 +42,7 @@ $routes->get('/testing', 'Home::index');
 
 /* Admin Routes */
 $routes->get('/admin', 'Admin::index');
+$routes->get('/list/manga', 'Admin::listmanga');
 
 /*
  * --------------------------------------------------------------------

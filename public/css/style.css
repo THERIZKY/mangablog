@@ -1,6 +1,6 @@
 /* Import Css Buat Manga */
-@import url("imageManga.css");
 @import url("setupThing.css");
+@import url("imageManga.css");
 
 /* Buat Navigation Bar Pada Menampilkan Manga */
 @import url("navbarManga.css");
@@ -10,6 +10,9 @@
 
 /* Back To Top Button */
 @import url("backToTop.css");
+
+/* Admin */
+@import url("Admin.css");
 
 /* Media Query */
 @import url("mediaQuery.css");

@@ -25,11 +25,13 @@
 </nav> -->
 <nav id="navigation">
     <div class="content">
-        <h4>Chapter 1</h4>
-        <a href="#">Love Live! School Idols Days</a>
+        <h4><?= $chapters[0]->judul; ?></h4>
+        <a href="/manga/<?= $chapters[0]->slug; ?>"><?= $chapters[0]->mangaTitle; ?></a>
     </div>
     <div class="navButton">
-        <a href="#"><i class="fa-solid fa-backward"></i>Previous Chapter </a>
-        <a href="#">Next Chapter<i class="fa-solid fa-forward"></i></a>
+        <a href="/manga/<?= $chapters[0]->slug; ?>/<?= ($chapters[0]->chapter - 1 === 0) ? "" : $chapters[0]->chapter - 1; ?>"><i class="fa-solid fa-backward"></i>Previous Chapter </a>
+
+        <!-- Next -->
+        <a href="/manga/<?= $chapters[0]->slug; ?>/<?= ($chapters[0]->chapter + 1 > $countChapter) ? "" : $chapters[0]->chapter + 1; ?>">Next Chapter<i class="fa-solid fa-forward"></i></a>
     </div>
 </nav>
