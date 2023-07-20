@@ -29,6 +29,11 @@ abstract class BaseController extends Controller
     protected $request;
     protected $mangaModels;
     protected $chapterModels;
+    protected $apiModels;
+    protected $client;
+    protected $mangadexURL;
+
+
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -53,9 +58,14 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
+        $this->mangadexURL = "https://api.mangadex.org";
+
         // Preload any models, libraries, etc, here.
         $this->mangaModels = model('mangaModels');
         $this->chapterModels = model('chapterModels');
+        $this->apiModels = model('apiModels');
+
         // E.g.: $this->session = \Config\Services::session();
+        $this->client = \Config\Services::curlrequest();
     }
 }

@@ -1,11 +1,18 @@
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
 <div class="container">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h1><?= $mangatitle; ?></h1>
+    <div class="row justify-content-center justify-content-lg-start">
+        <div class="col-lg-3">
             <img src="<?= $cover ?>" class="cover" />
-            <div class="alert" role="alert"><?= $deskripsi ?></div>
+        </div>
+        <div class="col-lg-9 ">
+            <h1><?= $mangatitle; ?></h1>
+            <p><?= $deskripsi; ?></p>
+            <p>Rating : <?= $rating; ?></p>
+            <p>
+                Author : <?php foreach ($authorName as $author) : ?> <b><?= $author ?>,</b> <?php endforeach; ?>
+            </p>
+            <p>Genres : </p>
         </div>
     </div>
     <div class="row">
