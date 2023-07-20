@@ -1,0 +1,87 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"manga"},
+{"type":"table","name":"auth_activation_attempts","database":"manga","data":
+[
+
+]
+}
+,{"type":"table","name":"auth_groups","database":"manga","data":
+[
+{"id":"1","name":"Admin","description":"Hak Akses Penuh Ke Website"},
+{"id":"2","name":"Users","description":"Hak akses terbatas"}
+]
+}
+,{"type":"table","name":"auth_groups_permissions","database":"manga","data":
+[
+
+]
+}
+,{"type":"table","name":"auth_groups_users","database":"manga","data":
+[
+{"group_id":"1","user_id":"2"},
+{"group_id":"2","user_id":"3"}
+]
+}
+,{"type":"table","name":"auth_logins","database":"manga","data":
+[
+{"id":"1","ip_address":"::1","email":"rizhrizh24@gmail.com","user_id":"1","date":"2023-07-03 14:24:15","success":"0"},
+{"id":"2","ip_address":"::1","email":"rizhrizh24@gmail.com","user_id":"2","date":"2023-07-13 07:33:01","success":"1"},
+{"id":"3","ip_address":"::1","email":"zoke@gmail.com","user_id":"3","date":"2023-07-13 07:33:47","success":"1"},
+{"id":"4","ip_address":"::1","email":"zoke@gmail.com","user_id":null,"date":"2023-07-13 07:41:06","success":"0"},
+{"id":"5","ip_address":"::1","email":"zoke@gmail.com","user_id":"3","date":"2023-07-13 07:41:10","success":"1"},
+{"id":"6","ip_address":"::1","email":"rizhrizh24@gmail.com","user_id":"2","date":"2023-07-13 07:41:47","success":"1"},
+{"id":"7","ip_address":"::1","email":"rizhrizh24@gmail.com","user_id":"2","date":"2023-07-13 16:40:22","success":"1"},
+{"id":"8","ip_address":"::1","email":"rizhrizh24@gmail.com","user_id":"2","date":"2023-07-13 22:40:34","success":"1"},
+{"id":"9","ip_address":"::1","email":"rizhrizh24@gmail.com","user_id":"2","date":"2023-07-14 07:30:30","success":"1"},
+{"id":"10","ip_address":"::1","email":"rizhrizh24@gmail.com","user_id":"2","date":"2023-07-14 15:21:08","success":"1"}
+]
+}
+,{"type":"table","name":"auth_permissions","database":"manga","data":
+[
+
+]
+}
+,{"type":"table","name":"auth_reset_attempts","database":"manga","data":
+[
+
+]
+}
+,{"type":"table","name":"auth_tokens","database":"manga","data":
+[
+
+]
+}
+,{"type":"table","name":"auth_users_permissions","database":"manga","data":
+[
+
+]
+}
+,{"type":"table","name":"blog","database":"manga","data":
+[
+
+]
+}
+,{"type":"table","name":"chapter","database":"manga","data":
+[
+
+]
+}
+,{"type":"table","name":"manga","database":"manga","data":
+[
+{"mangaId":"1","mangaTitle":"Love Live! - School Idol Days","slug":"love-live-school-idol-days","cover":"https:\/\/i.postimg.cc\/YSPNRc0W\/001.jpg","deskripsi":"Ever heard of \"School Days\"?","rilis":"2023-07-13 11:30:12"},
+{"mangaId":"2","mangaTitle":"Love Live! Sunshine!! - School Idol Days","slug":"love-live-sunshine-school-idol-days","cover":"https:\/\/i.postimg.cc\/fbzWr1G8\/001.jpg","deskripsi":"(Bokura no Love Live! 13) School Idol Days S (ラブライブ! サンシャイン!!)","rilis":"2023-07-13 16:40:52"}
+]
+}
+,{"type":"table","name":"migrations","database":"manga","data":
+[
+{"id":"1","version":"2017-11-20-223112","class":"Myth\\Auth\\Database\\Migrations\\CreateAuthTables","group":"default","namespace":"Myth\\Auth","time":"1688385684","batch":"1"}
+]
+}
+,{"type":"table","name":"users","database":"manga","data":
+[
+{"id":"2","email":"rizhrizh24@gmail.com","username":"Rizhora","password_hash":"$2y$10$nfjGD1sx.w5v5BBHI3Yjk.X07LwkMaPjebB.Nd7DlgKKCchU8zXCO","reset_hash":null,"reset_at":null,"reset_expires":null,"activate_hash":null,"status":null,"status_message":null,"active":"1","force_pass_reset":"0","created_at":"2023-07-03 14:25:43","updated_at":"2023-07-03 14:25:43","deleted_at":null},
+{"id":"3","email":"zoke@gmail.com","username":"Zokes","password_hash":"$2y$10$qp5Aev8OHUIpwAiioMwVru7NLUPMiZSil0nBqUjtAfj.5HJvvSYSy","reset_hash":null,"reset_at":null,"reset_expires":null,"activate_hash":null,"status":null,"status_message":null,"active":"1","force_pass_reset":"0","created_at":"2023-07-13 07:33:42","updated_at":"2023-07-13 07:33:42","deleted_at":null}
+]
+}
+]
