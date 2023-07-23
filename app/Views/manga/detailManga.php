@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-12 text-center">
             <h1>Daftar Chapter</h1>
-            <div class="bg-body-tertiary p-3 overflow-auto mb-5" style="max-height: 450px; height: 450px;">
+            <div class="bg-body-tertiary p-3 overflow-auto mb-5" style="max-height: 450px; height: 450px;"> 
                 <?php if (empty($chapters)) : ?>
                     <div class="alert alert-warning text-center">Manga Tidak Memiliki Chapter</div>
                 <?php else : ?>
