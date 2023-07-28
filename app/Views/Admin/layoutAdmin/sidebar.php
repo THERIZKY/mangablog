@@ -41,15 +41,22 @@
 
             <div class="navigation">
                 <hr>
-                <h5 class="heading-link">Tambah Postingan</h5>
+                <h5 class="heading-link">Manga and Chapter</h5>
                 <hr>
-                <li class="navi-link"><a href="/admin/add/manga">Tambah Manga</a></li>
-                <li class="navi-link"><a href="/admin/add/blog">Tambah Blog</a></li>
-                <hr>
-                <h5 class="heading-link">List Postingan</h5>
-                <hr>
+
+                <h6 class="second-heading">List Manga And Chapter</h6>
                 <li class="navi-link"><a href="/admin/manga">List Manga</a></li>
+                <li class="navi-link"><a href="/admin/chapter">List Chapter</a></li>
+
+                <h6 class="second-heading mt-3">Tambah Manga And Chapter</h6>
+                <li class="navi-link"><a href="/admin/add/manga">Tambah Manga</a></li>
+                <li class="navi-link"><a href="/admin/add/chapter">Tambah Chapter</a></li>
+
+                <hr>
+                <h5 class="heading-link">Blog And Comment</h5>
+                <hr>
                 <li class="navi-link"><a href="/admin/blog">List Blog</a></li>
+                <li class="navi-link"><a href="/admin/add/blog">Tambah Blog</a></li>
                 <hr>
                 <h5 class="heading-link">About Us Website</h5>
                 <hr>

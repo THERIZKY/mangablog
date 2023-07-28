@@ -10,77 +10,53 @@ class Admin extends BaseController
 {
     public function index()
     {
-        //Ngambil Data Dari API
-        $baseUrl = 'https://api.mangadex.org';
-        $title = "Oshi No Ko";
-
-        $query = [
-            'title' => $title,
-            'limit' => 1
-        ];
-        $response = ApiHelper::callApi($baseUrl . '/manga', 'GET', $query);
-        if ($response) {
-            $mangaDesc = array_map(
-                function ($manga) {
-                    return $manga->attributes->description;
-                },
-                $response->data
-            );
-        } else {
-            $mangaDesc = null;
-        }
-
         $data = [
             'title' => 'Dashboard Admin || OsanagoManga',
-            'deskripsi' => $mangaDesc[0],
+            'jumlahManga' => $this->mangaModels->countAllManga(),
+            'jumlahChapter' => $this->chapterModels->countAllChapter(),
         ];
 
-        // dd($this->mangaModels->countAllManga());
         return view('admin/index', $data);
     }
 
-    public function API()
+
+    /*------------- List Chapter Buat Admin ------------------- */
+    public function listchapter()
     {
-        $baseUrl = 'https://api.mangadex.org';
-        $title = "Oshi No Ko";
+        $data = [
+            'title' => 'List Chapter Admin || OsanagoManga',
+            'chapterList' => $this->chapterModels->getChapterList(),
+        ];
 
-        $response = $this->client->request('GET', $baseUrl . '/manga', [
-            'query' => [
-                'title' => $title,
-                'limit' => 1
-            ]
-        ]);
-
-        $data = json_decode($response->getBody());
-
-        d($data);
-
-        $mangaDesc = array_map(function ($manga) {
-            return $manga->attributes->description;
-        }, $data->data);
-
-        dd($mangaDesc[0]->en);
+        return view('admin/chapterlist', $data);
     }
 
+
+    /*------------- List Manga Buat Admin ----------------- */
     public function listmanga()
     {
-        $this->mangaModels->getManga();
+        /* ---------Ambil Data Manga Dari API--------- */
+
+        $mangaData = $this->getDataManga();
+
 
         $data = [
             'title' => 'List Manga Admin || OsanagoManga',
-            'manga' => $this->mangaModels->getManga()
+            'manga' => $mangaData
         ];
 
         return view('admin/mangalist', $data);
     }
 
+
+    /*------------- Nambahin Manga ------------------- */
     public function addManga()
     {
         $data = ['title' => 'Tambah Manga || OsanagoManga'];
 
         return view('admin/tambahmanga', $data);
     }
-
+    //Masukin Manga Ke Database
     public function saveManga()
     {
         $mangaTitle = $this->request->getPost('mangaTitle');

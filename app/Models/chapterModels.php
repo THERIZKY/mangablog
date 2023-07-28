@@ -20,6 +20,7 @@ class chapterModels extends Model
         return $builder->join('manga', 'manga.mangaId = chapter.idManga', 'inner')->where(['slug' => $slug])->orderBy("chapter", "ASC")->get()->getResultObject();
     }
 
+    // Buat Ngambil 1 Chapter trus ditampilin ke layar
     public function getChapter($slug, $chapter)
     {
         $db      = \Config\Database::connect();
@@ -34,5 +35,21 @@ class chapterModels extends Model
         $builder = $db->table('chapter');
 
         return $builder->join('manga', 'manga.mangaId = chapter.idManga', 'inner')->where(['slug' => $slug,])->countAllResults();
+    }
+
+    public function countAllChapter()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('chapter');
+
+        return $builder->countAllResults();
+    }
+
+    public function getChapterList()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('chapter');
+
+        return $builder->join('manga', 'manga.mangaId = chapter.idManga', 'inner')->orderBy("published_at", "DESC")->get()->getResultObject();
     }
 }

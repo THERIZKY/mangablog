@@ -39,12 +39,16 @@ $routes->get('/manga/(:any)/(:num)', 'Manga::getChapter/$1/$2');
 $routes->get('/manga/(:any)', 'Manga::getDetailManga/$1');
 $routes->get('/testing', 'Home::index');
 
-$routes->get('/testApi', 'Admin::API');
+
+// $routes->get('/testApi', 'Admin::API');
+
+
 
 /* Admin Routes */
 $routes->group('/admin', ['filter' => 'role:Admin'], function ($routes) {
     $routes->get('/', 'Admin::index');
     $routes->get('manga', 'Admin::listmanga');
+    $routes->get('chapter', 'Admin::listchapter');
     $routes->get('add/manga', 'Admin::addManga');
 
     /* POST */

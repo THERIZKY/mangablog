@@ -15,7 +15,8 @@ class mangaModels extends Model
     public function getManga($slug = null)
     {
         if ($slug !== null) {
-            return $this->where(['slug' => $slug])->first();
+            return $this->where(['slug' => $slug])
+                ->first();
         } else {
             return $this->findAll();
         }
@@ -26,7 +27,10 @@ class mangaModels extends Model
         $db      = \Config\Database::connect();
         $builder = $db->table('manga');
 
-        return $builder->select('*')->orderBy('rilis', 'DESC')->get()->getResultObject();
+        return $builder->select('*')
+            ->orderBy('rilis', 'DESC')
+            ->get()
+            ->getResultObject();
     }
 
     public function insertDataManga($data)
@@ -36,13 +40,12 @@ class mangaModels extends Model
 
         $builder->insert($data);
     }
-
     // Hitung total Manga yang ada
     public function countAllManga()
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('manga');
 
-        return $jumlahManga = $builder->countAllResults();
+        return $builder->countAllResults();
     }
 }

@@ -14,6 +14,9 @@
 /* Admin */
 @import url("Admin.css");
 
+/* Untuk Login */
+@import url("Auth.css");
+
 /* Media Query */
 @import url("mediaQuery.css");
 

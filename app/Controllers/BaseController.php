@@ -9,6 +9,11 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
+// Api Helper
+use App\Helpers\ApiHelper;
+
+use function PHPUnit\Framework\isEmpty;
+
 /**
  * Class BaseController
  *
@@ -42,7 +47,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['auth'];
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -67,5 +72,146 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
         $this->client = \Config\Services::curlrequest();
+    }
+
+    public function getDataManga($slug = null)
+    {
+        if (isEmpty($slug)) {
+            $mangaAPI = $this->getMangaNoSlug();
+        } else {
+            $mangaAPI = $this->getMangaWithSlug($slug);
+        }
+
+        return $mangaAPI;
+    }
+
+    // Buat Misahin Program Di Atas
+    public function getMangaWithSlug($slug)
+    {
+        $manga = $this->mangaModels->getManga($slug);
+
+        $query = [
+            'order[relevance]' => 'desc',
+            'title' => $manga['mangaTitle'],
+            'limit' => 1
+        ];
+
+        $response = ApiHelper::callApi($this->mangadexURL . '/manga', 'GET', $query);
+
+        $dataManga = [];
+
+        if ($response) {
+            $mangaData = $response->data[0] ?? null;
+            if ($mangaData) {
+
+                // ------Buat Nyari Author Sama Cover-----
+                $coverId = null;
+                $authors = [];
+
+                foreach ($mangaData->relationships as $relation) {
+                    if ($relation->type === "cover_art") {
+                        $coverId = $relation->id;
+                    }
+
+                    if ($relation->type === 'author') {
+                        $authors[] = $relation->id;
+                    }
+                }
+
+                // Cover
+                $mangaCover = null;
+                if ($coverId) {
+                    $response   = ApiHelper::callApi($this->mangadexURL . '/cover/' . $coverId, 'GET');
+                    $coverName  = $response->data->attributes->fileName;
+                    $mangaCover = "https://uploads.mangadex.org/covers/{$mangaData->id}/{$coverName}";
+                }
+
+                // -------Ambil Data Author Dari API-------
+                $authorNames = [];
+                foreach ($authors as $author) {
+                    $response = ApiHelper::callApi($this->mangadexURL . '/author/' . $author);
+                    $authorNames[] = $response->data->attributes->name;
+                }
+
+                /* ------Masukin Data Manga Nya Ke Variable------ */
+                $dataManga[] = (object)[
+                    'id'            => $mangaData->id,
+                    'deskripsi'     => $mangaData->attributes->description->en,
+                    'title'         => $mangaData->attributes->title->en,
+                    'cover'         => $mangaCover,
+                    'authorName'    => $authorNames,
+                ];
+            }
+        }
+
+        return $dataManga;
+    }
+
+    public function getMangaNoSlug()
+    {
+        $manga = $this->mangaModels->getManga();
+
+        // Array untuk menyimpan data manga
+        $dataManga = [];
+
+        foreach ($manga as $m) {
+            $query = [
+                'order[relevance]'  => 'desc',
+                'title'             => $m['mangaTitle'],
+                'limit'             => 1
+
+            ];
+
+            $response = ApiHelper::callApi($this->mangadexURL . '/manga', 'GET', $query);
+
+
+            if ($response) {
+                $mangaData = $response->data[0] ?? null;
+
+                if ($mangaData) {
+
+                    /* ----Ambil Data Manga Dari API---- */
+                    $coverId = null;
+                    $authors = [];
+
+                    foreach ($mangaData->relationships as $relation) {
+                        if ($relation->type === "cover_art") {
+                            $coverId = $relation->id;
+                        }
+
+                        if ($relation->type === 'author') {
+                            $authors[] = $relation->id;
+                        }
+                    }
+
+                    // Cover
+                    $mangaCover = null;
+                    if ($coverId) {
+                        $response   = ApiHelper::callApi($this->mangadexURL . '/cover/' . $coverId, 'GET');
+                        $coverName  = $response->data->attributes->fileName;
+                        $mangaCover = "https://uploads.mangadex.org/covers/{$mangaData->id}/{$coverName}";
+                    }
+
+                    // -------Ambil Data Author Dari API-------
+                    $authorNames = [];
+                    foreach ($authors as $author) {
+                        $response = ApiHelper::callApi($this->mangadexURL . '/author/' . $author);
+                        $authorNames[] = $response->data->attributes->name;
+                    }
+
+
+
+                    /* ------Masukin Data Manga Nya Ke Variable------ */
+                    $dataManga[] = (object)[
+                        'id'            => $mangaData->id,
+                        'deskripsi'     => $mangaData->attributes->description->en,
+                        'title'         => $mangaData->attributes->title->en,
+                        'cover'         => $mangaCover,
+                        'authorName'    => $authorNames,
+                    ];
+                }
+            }
+        }
+        return $dataManga;
     }
 }
