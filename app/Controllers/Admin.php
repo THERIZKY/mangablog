@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Helpers\ApiHelper;
 
 use CodeIgniter\I18n\Time;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class Admin extends BaseController
 {
@@ -61,7 +62,13 @@ class Admin extends BaseController
     {
         $mangaTitle = $this->request->getPost('mangaTitle');
         $mangaCoverLink = $this->getCoverManga($mangaTitle);
-        $mangaDeskripsi = $this->getDescription($mangaTitle);
+        $deskripsiInggris = $this->getDescription($mangaTitle);
+
+        $tr = new GoogleTranslate('en');
+        $tr->setSource('en');
+        $tr->setTarget('in');
+        $mangaDeskripsi = $tr->translate($deskripsiInggris);
+
 
         //Generating Slug
         $mangaSlug = url_title($this->request->getVar('mangaTitle'), '-', true);
@@ -84,9 +91,11 @@ class Admin extends BaseController
 
     public function testing()
     {
-        d($this->getMangaId("School Idols Days"));
-        $this->getDescription("Oshi No Ko");
-        d($this->getAuthorName("Oshi No Ko"));
-        dd($this->getCoverManga("Oshi No Ko"));
+        $description = "Kyoko Hori is your average teenage girl… who has a side she wants no one else to ever discover. Then there's her classmate Izumi Miyamura, your average glasses-wearing boy — who's also a totally different person outside of school. When the two unexpectedly meet, they discover each other's secrets, and a friendship is born.";
+
+        $tr = new GoogleTranslate('en');
+        $tr->setSource('en');
+        $tr->setTarget('in');
+        dd($tr->translate($description));
     }
 }
