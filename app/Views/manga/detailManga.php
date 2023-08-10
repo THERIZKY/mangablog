@@ -3,11 +3,11 @@
 <div class="container">
     <div class="row justify-content-center justify-content-lg-start">
         <div class="col-lg-3">
-            <img src="<?= $cover ?>" class="cover" />
+            <img src="<?= $mangas['cover'] ?>" class="cover" />
         </div>
         <div class="col-lg-9 ">
-            <h1><?= $mangatitle; ?></h1>
-            <p><?= $deskripsi; ?></p>
+            <h1><?= $mangas['mangaTitle']; ?></h1>
+            <p><?= $mangas['deskripsi']; ?></p>
             <p>Rating : <?= $rating; ?></p>
             <p>
                 Author : <?php foreach ($authorName as $author) : ?> <b><?= $author ?>,</b> <?php endforeach; ?>

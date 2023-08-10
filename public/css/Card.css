@@ -1,0 +1,58 @@
+.card {
+	margin: 25px;
+	color: grey;
+}
+
+.judulManga {
+	color: grey;
+	transition: all 0.3s ease;
+}
+
+.judulManga:hover {
+	color: var(--color-content);
+}
+
+.cardContainer {
+	display: flex;
+}
+
+.cardImage {
+	width: 100%;
+	overflow: hidden;
+	border-radius: 5px;
+}
+
+.cardImage img {
+	transition: all 0.3s ease;
+}
+
+.cardImage img:hover {
+	transform: scale(1.15);
+}
+
+.card a {
+	color: white;
+}
+
+.cardContent {
+	margin-left: 10px;
+}
+
+.chapter {
+	margin-block: 10px;
+	text-align: center;
+	width: 100px;
+	height: 20px;
+	background-color: var(--color-background-dark);
+	border-radius: 20px;
+	transition: all 0.1s linear;
+}
+
+.chapter:hover {
+	background-color: var(--color-content);
+}
+
+.cardTitle {
+	font-weight: 900;
+	margin-bottom: 10px;
+}

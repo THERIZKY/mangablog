@@ -20,6 +20,11 @@
 /* Media Query */
 @import url("mediaQuery.css");
 
+/* Card */
+@import url("Card.css");
+
+@import url("Test.css");
+
 /* Random Thing / Testing  */
 .test {
 	height: 1000px;

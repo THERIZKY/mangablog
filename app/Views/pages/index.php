@@ -19,6 +19,34 @@
                 <?php endforeach; ?>
             </div>
         </div>
+
+        <!-- Benerin Ini -->
+        <!-- <div class="card">
+            <div class="cardContainer">
+                <div class="cardHeader">
+                    <div class="cardImage">
+                        <a href="#">
+                            <img src="" alt=" Manga Cover " />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="cardContent">
+                    <div class="cardTitle">
+                        <a href="#" class="judulManga">
+                            MangaTitle
+                        </a>
+                    </div>
+
+                    <div class="chapter">
+                        <a href="#" class="chapter">
+                            Chapter 1
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div> -->
     </div>
 </div>
 <?= $this->endSection(); ?>

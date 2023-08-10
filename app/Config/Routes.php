@@ -51,6 +51,8 @@ $routes->group('/admin', ['filter' => 'role:Admin'], function ($routes) {
     $routes->get('chapter', 'Admin::listchapter');
     $routes->get('add/manga', 'Admin::addManga');
 
+    $routes->get('testing', 'Admin::testing');
+
     /* POST */
     $routes->post('save/manga', 'Admin::saveManga');
 });

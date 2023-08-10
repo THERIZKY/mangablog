@@ -4,9 +4,9 @@
 <div class="d-flex gap-3 justify-content-center flex-wrap">
     <?php foreach ($manga as $m) : ?>
         <div class="card" style="width: 15rem;">
-            <img src="<?= $m->cover ?>" class="card-img-top">
+            <img src="<?= $m['cover'] ?>" class="card-img-top">
             <div class="card-body">
-                <h5 class="card-title"><?= $m->title; ?></h5>
+                <h5 class="card-title"><?= $m["mangaTitle"]; ?></h5>
             </div>
             <a href="#" class="btn btn-warning m-2">Edit</a>
             <a href="#" class="btn btn-danger m-2">Delete</a>

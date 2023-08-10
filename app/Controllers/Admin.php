@@ -37,7 +37,7 @@ class Admin extends BaseController
     {
         /* ---------Ambil Data Manga Dari API--------- */
 
-        $mangaData = $this->getDataManga();
+        $mangaData = $this->mangaModels->getManga();
 
 
         $data = [
@@ -60,16 +60,14 @@ class Admin extends BaseController
     public function saveManga()
     {
         $mangaTitle = $this->request->getPost('mangaTitle');
-        $mangaCoverLink = $this->request->getPost('mangaCover');
-        $mangaDeskripsi = $this->request->getPost('mangaDeskripsi');
+        $mangaCoverLink = $this->getCoverManga($mangaTitle);
+        $mangaDeskripsi = $this->getDescription($mangaTitle);
 
         //Generating Slug
         $mangaSlug = url_title($this->request->getVar('mangaTitle'), '-', true);
 
         // Getting Datetime
         $dateReleased = Time::now()->toDateTimeString();
-
-        // dd($mangaSlug);
 
         $data = [
             'mangaTitle' => $mangaTitle,
@@ -82,5 +80,13 @@ class Admin extends BaseController
         $this->mangaModels->insertDataManga($data);
 
         return redirect()->to('/admin');
+    }
+
+    public function testing()
+    {
+        d($this->getMangaId("School Idols Days"));
+        $this->getDescription("Oshi No Ko");
+        d($this->getAuthorName("Oshi No Ko"));
+        dd($this->getCoverManga("Oshi No Ko"));
     }
 }
